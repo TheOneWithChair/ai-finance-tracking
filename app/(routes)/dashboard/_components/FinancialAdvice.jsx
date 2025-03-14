@@ -195,7 +195,7 @@ function FinancialAdvice({ budgetList, expensesList, incomeList }) {
     <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl shadow-sm mt-6">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-blue-900">Finan Smart AI 🤖</h2>
+          <h2 className="text-2xl font-bold text-blue-900">SmartBudget AI 🤖</h2>
           <p className="text-blue-600 text-sm mt-1">Your Personal Financial Advisor</p>
         </div>
         <Button
