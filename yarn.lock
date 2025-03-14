@@ -1149,7 +1149,7 @@ formdata-node@^4.3.2:
     node-domexception "1.0.0"
     web-streams-polyfill "4.0.0-beta.3"
 
-framer-motion@^11.3.2:
+framer-motion@^11.18.2:
   version "11.18.2"
   resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-11.18.2.tgz"
   integrity sha512-5F5Och7wrvtLVElIpclDT0CBzMVg3dL22B64aZwHtsIY8RB4mXICLrkajK4G9R+ieSAGcgrLeae2SeUTg2pr6w==

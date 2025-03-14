@@ -38,8 +38,9 @@ function CreateIncomes({ refreshData }) {
         amount: amount,
         createdBy: user?.primaryEmailAddress?.emailAddress,
         icon: emojiIcon,
+        createdAt: new Date().toLocaleDateString(),
       })
-      .returning({ insertedId: Incomes.id });
+      .returning();
 
     if (result) {
       refreshData();

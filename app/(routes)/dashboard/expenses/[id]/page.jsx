@@ -57,13 +57,26 @@ function ExpensesScreen({ params }) {
    * Get Latest Expenses
    */
   const getExpensesList = async () => {
-    const result = await db
-      .select()
-      .from(Expenses)
-      .where(eq(Expenses.budgetId, params.id))
-      .orderBy(desc(Expenses.id));
-    setExpensesList(result);
-    console.log(result);
+    try {
+      const result = await db
+        .select({
+          id: Expenses.id,
+          name: Expenses.name,
+          amount: Expenses.amount,
+          createdAt: Expenses.createdAt,
+          budgetId: Expenses.budgetId,
+          budgetName: Budgets.name,
+        })
+        .from(Expenses)
+        .leftJoin(Budgets, eq(Expenses.budgetId, Budgets.id))
+        .where(eq(Expenses.budgetId, params.id))
+        .orderBy(desc(Expenses.id));
+
+      console.log("Fetched expenses for budget:", result);
+      setExpensesList(result);
+    } catch (error) {
+      console.error("Error fetching expenses:", error);
+    }
   };
 
   /**

@@ -25,13 +25,15 @@ function ExpensesScreen() {
           name: Expenses.name,
           amount: Expenses.amount,
           createdAt: Expenses.createdAt,
-          budgetName: Budgets.name, // Also get the budget name
+          budgetId: Expenses.budgetId,
+          budgetName: Budgets.name,
         })
         .from(Expenses)
         .leftJoin(Budgets, eq(Expenses.budgetId, Budgets.id))
+        .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
         .orderBy(desc(Expenses.id));
 
-      console.log("Fetched expenses:", result); // For debugging
+      console.log("Fetched expenses:", result);
       setExpensesList(result);
     } catch (error) {
       console.error("Error fetching expenses:", error);

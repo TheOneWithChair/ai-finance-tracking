@@ -15,18 +15,21 @@ function IncomeList() {
   }, [user]);
 
   const getIncomelist = async () => {
-    const result = await db
-      .select({
-        ...getTableColumns(Incomes),
-        totalSpend: sql`sum(${Expenses.amount})`.mapWith(Number),
-        totalItem: sql`count(${Expenses.id})`.mapWith(Number),
-      })
-      .from(Incomes)
-      .leftJoin(Expenses, eq(Incomes.id, Expenses.budgetId))
-      .where(eq(Incomes.createdBy, user?.primaryEmailAddress?.emailAddress))
-      .groupBy(Incomes.id)
-      .orderBy(desc(Incomes.id));
-    setIncomelist(result);
+    try {
+      const result = await db
+        .select()
+        .from(Incomes)
+        .where(eq(Incomes.createdBy, user?.primaryEmailAddress?.emailAddress))
+        .orderBy(desc(Incomes.id));
+
+      console.log("Fetched incomes:", result);
+      setIncomelist(result.map(income => ({
+        ...income,
+        amount: parseFloat(income.amount).toFixed(2)
+      })));
+    } catch (error) {
+      console.error("Error fetching income list:", error);
+    }
   };
 
   return (
