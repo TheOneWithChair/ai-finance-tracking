@@ -25,7 +25,8 @@ function IncomeList() {
       console.log("Fetched incomes:", result);
       setIncomelist(result.map(income => ({
         ...income,
-        amount: parseFloat(income.amount).toFixed(2)
+        amount: parseFloat(income.amount).toFixed(2),
+        
       })));
     } catch (error) {
       console.error("Error fetching income list:", error);

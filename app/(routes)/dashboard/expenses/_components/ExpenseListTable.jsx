@@ -35,7 +35,7 @@ function ExpenseListTable({ expensesList, refreshData }) {
         <h2 className="font-bold">Amount</h2>
         <h2 className="font-bold">Budget</h2>
         <h2 className="font-bold">Date</h2>
-        <h2 className="font-bold">Action</h2>
+        <h2 className="font-bold text-center">Action</h2>
       </div>
       {expensesList.length === 0 ? (
         <div className="text-center py-4 bg-slate-50">
@@ -46,14 +46,16 @@ function ExpenseListTable({ expensesList, refreshData }) {
           <div key={expense.id} className="grid grid-cols-5 bg-slate-50 p-2 border-b">
             <h2>{expense.name}</h2>
             <h2>₹{formatAmount(expense.amount)}</h2>
-            <h2>{expense.budgetName || expense.budgetId ? expense.budgetName : 'No Budget'}</h2>
+            <h2>{expense.budgetName || 'No Budget'}</h2>
             <h2>{expense.createdAt}</h2>
-            <button
-              onClick={() => deleteExpense(expense)}
-              className="text-red-500 cursor-pointer hover:text-red-700"
-            >
-              Delete
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={() => deleteExpense(expense)}
+                className="text-red-500 cursor-pointer hover:text-red-700"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))
       )}

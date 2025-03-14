@@ -38,7 +38,11 @@ function CreateIncomes({ refreshData }) {
         amount: amount,
         createdBy: user?.primaryEmailAddress?.emailAddress,
         icon: emojiIcon,
-        createdAt: new Date().toLocaleDateString(),
+        createdAt: new Date().toLocaleDateString('en-IN', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        })
       })
       .returning();
 

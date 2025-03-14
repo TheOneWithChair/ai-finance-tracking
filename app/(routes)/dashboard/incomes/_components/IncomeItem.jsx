@@ -27,7 +27,8 @@ function IncomeItem({ budget }) {
       <div className="mt-5">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-sm text-gray-600">
-            Created on: {budget?.createdAt || 'N/A'}
+          Created on: {budget?.createdAt || 'N/A'}
+
           </h2>
         </div>
       </div>
