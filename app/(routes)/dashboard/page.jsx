@@ -72,7 +72,7 @@ function Dashboard() {
         name: Expenses.name,
         amount: Expenses.amount,
         createdAt: Expenses.createdAt,
-        budgetName: Budgets.name
+        budgetName: Budgets.name,
       })
       .from(Expenses)
       .leftJoin(Budgets, eq(Expenses.budgetId, Budgets.id))
@@ -89,8 +89,8 @@ function Dashboard() {
       </p>
 
       <CardInfo budgetList={budgetList} incomeList={incomeList} />
-      
-      <FinancialAdvice 
+
+      <FinancialAdvice
         budgetList={budgetList}
         expensesList={expensesList}
         incomeList={incomeList}
